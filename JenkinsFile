@@ -6,15 +6,17 @@ pipeline {
     }
   }
   stages {
-    stage('Where is Docker?') {
-  steps {
-    sh '''
-      which docker
-      docker info
-      docker ps
-    '''
-  }
-}
+    stage('Install Java 17') {
+      steps {
+        sh '''
+          apt-get update
+          apt-get install -y openjdk-17-jdk
+          update-alternatives --install /usr/bin/java java /usr/lib/jvm/java-17-openjdk-amd64/bin/java 1
+          update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+          java -version
+        '''
+      }
+    }
     stage('Checkout') {
       steps {
         sh 'rm -rf target || true'
