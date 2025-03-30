@@ -50,7 +50,7 @@ pipeline {
             GIT_REPO_NAME = "App-Delivery-Automation"
             GIT_USER_NAME = "muhammedgamal760"
         }
-      sp  steps {
+        steps {
             withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                 sh '''
                     git config user.email "muhammedgamal760@gmail.com"
