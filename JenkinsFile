@@ -6,13 +6,9 @@ pipeline {
     }
   }
   stages {
-    stage('Clean Workspace') {
-      steps {
-        deleteDir() // This deletes all files in the workspace before git checkout
-      }
-    }
     stage('Checkout') {
       steps {
+        deleteDir()
         sh 'echo passed'
         git branch: 'master', url: 'https://github.com/muhammedgamal760/App-Delivery-Automation.git'
       }
