@@ -1,22 +1,11 @@
 pipeline {
   agent {
     docker {
-      image 'abhishekf5/maven-abhishek-docker-agent:v1'
+      image 'muhammedgamal/app-delivery-automation'
       args '--user root -v /var/run/docker.sock:/var/run/docker.sock --network host' // mount Docker socket to access the host's Docker daemon
     }
   }
   stages {
-    stage('Install Java 17') {
-      steps {
-        sh '''
-          apt-get update
-          apt-get install -y openjdk-17-jdk
-          update-alternatives --install /usr/bin/java java /usr/lib/jvm/java-17-openjdk-amd64/bin/java 1
-          update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
-          java -version
-        '''
-      }
-    }
     stage('Checkout') {
       steps {
         sh 'rm -rf target || true'
