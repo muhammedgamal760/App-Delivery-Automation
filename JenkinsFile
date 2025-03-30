@@ -6,6 +6,15 @@ pipeline {
     }
   }
   stages {
+    stage('Where is Docker?') {
+  steps {
+    sh '''
+      which docker
+      docker info
+      docker ps
+    '''
+  }
+}
     stage('Checkout') {
       steps {
         sh 'rm -rf target || true'
