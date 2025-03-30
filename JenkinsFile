@@ -9,7 +9,7 @@ pipeline {
     stage('Checkout') {
       steps {
         sh 'echo passed'
-        git branch: 'main', url: 'https://github.com/muhammedgamal760/App-Delivery-Automation.git'
+        git branch: 'master', url: 'https://github.com/muhammedgamal760/App-Delivery-Automation.git'
       }
     }
     stage('Build and Test') {
