@@ -10,3 +10,11 @@ RUN apt-get update && apt-get install -y openjdk-17-jdk && \
     export PATH=$JAVA_HOME/bin:$PATH && \
     echo "JAVA version:" && \
     java -version
+
+
+# ✅ Set environment variables globally for future containers
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+ENV PATH=$JAVA_HOME/bin:$PATH
+
+# Optional: sanity check
+RUN java -version && echo "Java 17 installed and set globally"
