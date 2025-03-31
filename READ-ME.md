@@ -1,6 +1,6 @@
-# Jenkins-Zero-To-Hero: Java-Maven-SonarQube-ArgoCD-Helm-K8s
+# Jenkins Pipeline for Java based application using Maven, SonarQube, Argo CD, Helm and Kubernetes
 
-![CI/CD Pipeline Architecture](https://user-images.githubusercontent.com/43399466/228301952-abc02ca2-9942-4a67-829317647b6f98b.png)
+![Screenshot 2023-03-28 at 9 38 09 PM](https://user-images.githubusercontent.com/43399466/228301952-abc02ca2-9942-4a67-8293-f76647b6f9d8.png)
 
 ## 🚀 Project Overview
 
@@ -60,8 +60,8 @@ The implementation follows a GitOps approach with clear separation between CI an
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/jenkins-zero-to-hero.git
-   cd jenkins-zero-to-hero
+   git clone https://github.com/muhammedgamal760/App-Delivery-Automation
+   cd App-Delivery-Automation
    ```
 
 2. **Set up Jenkins**:
@@ -81,13 +81,13 @@ The implementation follows a GitOps approach with clear separation between CI an
 
 5. **Set up K3d cluster**:
    ```bash
-   k3d cluster create mycluster --servers 3 --agents 0 -p "8080:80@loadbalancer"
+   k3d cluster create mycluster --servers 3
    ```
 
 6. **Install ArgoCD**:
    ```bash
-   kubectl create namespace argocd
-   kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+   Download Argocd Operator from operatorhub
+   cd "Argo CD" and apply the basic.yaml file
    ```
 
 ## 📋 Pipeline Configuration
@@ -113,14 +113,14 @@ The implementation follows a GitOps approach with clear separation between CI an
 ## 📂 Repository Structure
 
 ```
+├── src/                    # application source code
 ├── agent/                  # Jenkins agent Dockerfile and configs
-├── java-maven-sonar-argocd-helm-k8s/
-│   ├── spring-boot-app/    # Java application source code
-│   ├── spring-boot-app-manifests/
-│   │   ├── deployment.yml  # Kubernetes deployment manifests
-│   │   └── service.yml     # Kubernetes service manifests
+├── manifests/
+│   ├── deployment.yml      # Kubernetes deployment manifests
+│   ├── service.yml         # Kubernetes service manifests
 ├── Jenkinsfile             # Jenkins pipeline definition
 └── README.md               # Project documentation
+└── pom.xml                 # required dependencies
 ```
 
 ## 🔄 CI/CD Workflow
